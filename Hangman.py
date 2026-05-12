@@ -2,14 +2,24 @@ from hangman_image import *
 from random import choice
 from propython import pyread
 from time import sleep
+from translator import *
 
-print('Hangman Game')
-print('Creator: Abdyrahym Begenjov     (GitHub: abdyrahym-begenjov)')
-start=input('Enter to start: ')
-print('Loading...')
+print('en  | ru')
+while True:
+    lan=input()
+    if lan=='en' or lan=='ru':
+        break
+
+print(translator('Hangman Game', lan))
+print(f'{translator('Creator: Abdyrahym Begenjov', lan)}     (GitHub: abdyrahym-begenjov)')
+start=input(translator('Enter to start game: ', lan))
+print(translator('Loading...', lan))
 sleep(2)
 
-lst=pyread('words.json')
+if lan=='ru':
+    lst=pyread('russian_words.json')
+else:
+    lst=pyread('words.json')
 point=0
 
 word=choice(lst)
@@ -17,6 +27,8 @@ word=word.lower()
 task='_ '*len(word)
 task1=task.split()
 print(task)
+
+lst=[]
 result={i: j for i, j in enumerate(word)}
 result1={}
 for i, j in result.items():
@@ -25,30 +37,36 @@ for i, j in result.items():
 while True:
     if '_' not in task1:
         print(word)
-        print('You win!!!')
+        print(translator('You win!!!', lan))
         break    
-    w=input('Enter a letter: ')
+    w=input(translator('Enter a letter: ', lan))
     if w=='':
-        print('You must enter the letter!!!')
-        print('Error!!!')
+        print(translator('You must enter the letter!!!', lan))
+        print(translator('Error!!!', lan))
         draw(d[point])
         point+=1
     else:
         w=w.lower().strip()
-        if w in word:
+        if w in word and w not in lst:
+            lst.append(w)
             num=len(result1[w])
             for n in range(num):
                 i=result1[w][n]
                 task1[i]=w
             task=' '.join(task1)
             print(task)
+        elif w in lst:
+            print(translator('This letter is already in the hidden word.', lan))
+            print(translator('Error!!!', lan))
+            draw(d[point])
+            point+=1
         elif point==9:
             draw(d[9])
-            print(f'Game Over!!!     Regular word: {word}')
+            print(f'{translator('Game Over!!!', lan)}     {translator('Regular word:', lan)} {word}')
             break
         else:
-            print('Error!!!')
+            print(translator('Error!!!', lan))
             draw(d[point])
             point+=1
 
-end=input('Enter to exit: ')
+end=input(translator('Enter to exit: ', lan))
