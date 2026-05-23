@@ -54,10 +54,13 @@ if lang=='' and words_list==[]:
 if name=='':
     name=enter_name()
 
+if name not in base:
+    base[name]={'Victories': 0, 'Defeats': 0}
+
 while True:
     print(translator('Hangman Game', lang))
     print(f'{translator('Creator: Abdyrahym Begenjov', lang)}     (GitHub: abdyrahym-begenjov)')
-    print(translator('Game      Highscores      Settings      Exit', lang))
+    print(translator('Game      Rules      Highscores      Settings      Exit', lang))
     mode=input(translator('Choose a game mode: ', lang))
     mode=mode.title().strip()
     if lang=='ru':
@@ -86,7 +89,7 @@ while True:
                 if '_' not in task1:
                     print(word)
                     print(translator('You win!!!', lang))
-                    base['Victories']+=1
+                    base[name]['Victories']+=1
                     break    
                 w=input(translator('Enter a letter: ', lang))
                 if w=='':
@@ -112,7 +115,7 @@ while True:
                     elif point==9:
                         draw(d[9])
                         print(f'{translator('Game Over!!!', lang)}     {translator('Regular word:', lang)} {word}')
-                        base['Defeats']+=1
+                        base[name]['Defeats']+=1
                         break
                     else:
                         print(translator('Error!!!', lang))
@@ -122,9 +125,18 @@ while True:
             end=input(translator('Enter to exit: ', lang))
             clear_screen()
         
-        case 'Records':
-            line1=base['Victories']
-            line2=base['Defeats']
+        case 'Rules':
+            if lang=='ru':
+                rules=pyread('ru_rules.txt')
+            else:
+                rules=pyread('en_rules.txt')
+            print(rules)
+            end=input(translator('Enter to exit mode: ', lang))
+            clear_screen()
+        
+        case 'Highscores':
+            line1=base[name]['Victories']
+            line2=base[name]['Defeats']
             print(f'{translator('VICTORIES', lang)}: {line1}')
             print(f'{translator('DEFEATS', lang)}: {line2}')
             end=input(translator('Enter to exit: ', lang))
@@ -141,6 +153,8 @@ while True:
                 match change:
                     case 'Name':
                         name=enter_name()
+                        if name not in base:
+                            base[name]={'Victories': 0, 'Defeats': 0}
                         clear_screen()
                     case 'Language':
                         lang, words_list=enter_lang()

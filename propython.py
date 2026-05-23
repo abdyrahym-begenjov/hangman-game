@@ -1,5 +1,4 @@
 import json
-import pickle
 def pyread(filename):
     try:
         match filename:
@@ -9,9 +8,6 @@ def pyread(filename):
             case filename if filename.endswith('.json'):
                 with open(filename, 'r', encoding='utf-8') as file:
                     return json.load(file)
-            case filename if filename.endswith('.pickle'):
-                with open(filename, 'rb') as file:
-                    return pickle.load(file)
             case _:
                 print('Error!!!')
     except FileNotFoundError:
@@ -27,9 +23,6 @@ def pywrite(filename, value):
             case filename if filename.endswith('.json'):
                 with open(filename, 'w', encoding='utf-8') as file:
                     json.dump(value, file, indent=4, ensure_ascii=False)
-            case filename if filename.endswith('.pickle'):
-                with open(filename, 'wb') as file:
-                    pickle.dump(value, file, indent=4, ensure_ascii=False)
             case _:
                 print('Error!!!')
     except FileNotFoundError:
