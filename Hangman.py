@@ -22,7 +22,7 @@ while True:
         clear_screen()
 
     if name not in base:
-        base[name]={'Victories': 0, 'Defeats': 0}
+        base[name]=[0, 0]
     
     print(translator('Hangman Game', lang))
     print(f'{translator('Creator: Abdyrahym Begenjov', lang)}     (GitHub: abdyrahym-begenjov)')
@@ -54,7 +54,7 @@ while True:
                 if '_' not in task1:
                     print(word)
                     print(translator('You win!!!', lang))
-                    base[name]['Victories']+=1
+                    base[name][0]+=1
                     break    
                 w=input(translator('Enter a letter: ', lang))
                 if w=='':
@@ -76,7 +76,7 @@ while True:
                     elif point==9:
                         draw(d[9])
                         print(f'{translator('Game Over!!!', lang)}     {translator('Regular word:', lang)} {word}')
-                        base[name]['Defeats']+=1
+                        base[name][1]+=1
                         break
                     else:
                         point=mistake_was_maden(d, point, lang)
@@ -94,7 +94,7 @@ while True:
             clear_screen()
         
         case 'Highscores':
-            leaderboard(base, name, lang)
+            draw_leaderboard(base, lang)
             end=input(translator('Enter to exit: ', lang))
             clear_screen()
 

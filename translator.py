@@ -28,8 +28,11 @@ rutranslate={
     'Highscores': 'Рекорды',
     'Settings': 'Настройки',
     'Exit': 'Выход',
+    'NAME |': 'ИМЯ |',
+    'OVERALL RESULT': 'ОБЩИЙ РЕЗУЛЬТАТ',
     'VICTORIES': 'ПОБЕДЫ',
-    'DEFEATS': 'ПОРАЖЕНИЯ'
+    'DEFEATS': 'ПОРАЖЕНИЯ',
+    'LEADERBOARD:': 'ЛИДЕРБОРД:'
              }
 
 
