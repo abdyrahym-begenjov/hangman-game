@@ -32,6 +32,7 @@ rutranslate={
     'OVERALL RESULT': 'ОБЩИЙ РЕЗУЛЬТАТ',
     'VICTORIES': 'ПОБЕДЫ',
     'DEFEATS': 'ПОРАЖЕНИЯ',
+    'You must enter only one letter!!!': 'Вы должны ввести только одну букву!!!',
     'LEADERBOARD:': 'ЛИДЕРБОРД:'
              }
 

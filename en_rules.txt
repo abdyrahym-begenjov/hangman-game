@@ -19,10 +19,9 @@ and save the stickman before it is too late.
   reveal its correct position(s).
 • ❌ Incorrect Guess: If the letter is not in the word, it is 
   an error. An extra part of the gallows/hangman will be drawn.
-• ⚠️ Already Guessed: Guessing a letter you have already found 
-  counts as an error!
-• ⚠️ Empty Input: Pressing Enter without typing a letter 
-  counts as an error!
+• 🙂 If the entered letter is already in the word, entered more 
+than one letter or you press Enter without entering the letter - 
+ыthis is not considered an error!
 
 
 🏆 WINNING & LOSING
@@ -36,7 +35,8 @@ and save the stickman before it is too late.
 📊 GAME MODES & MENUS
 ------------------------------------------------------------
 • Game: Launch a new puzzle and try to solve the hidden word.
-• Rules: The mode provides players with a quick guide to the game's mechanics, winning conditions, and menu navigation.
+• Rules: The mode provides players with a quick guide to the game's 
+mechanics, winning conditions, and menu navigation.
 • Highscores: View your lifetime total tracking of Victories 
   and Defeats.
 • Settings: Update your player Name or switch the game Language 

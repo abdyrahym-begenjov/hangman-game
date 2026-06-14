@@ -35,14 +35,13 @@ while True:
             start=input(translator('Enter to start game: ', lang))
             print(translator('Loading...', lang))
             sleep(2)
+            clear_screen()
 
             point=0 
-
             word=choice(words_list)
             word=word.lower()
             task='_ '*len(word)
             task1=task.split()
-            print(task)
 
             lst=[]
             result={i: j for i, j in enumerate(word)}
@@ -51,6 +50,7 @@ while True:
                 result1.setdefault(j, []).append(i)
 
             while True:
+                print(task)
                 if '_' not in task1:
                     print(word)
                     print(translator('You win!!!', lang))
@@ -59,7 +59,6 @@ while True:
                 w=input(translator('Enter a letter: ', lang))
                 if w=='':
                     print(translator('You must enter the letter!!!', lang))
-                    point=mistake_was_maden(d, point, lang)
                 else:
                     w=w.lower().strip()
                     if w in word and w not in lst:
@@ -69,10 +68,10 @@ while True:
                             i=result1[w][n]
                             task1[i]=w
                         task=' '.join(task1)
-                        print(task)
+                    elif len(w)>1:
+                        print(translator('You must enter only one letter!!!'))
                     elif w in lst:
                         print(translator('This letter is already in the hidden word.', lang))
-                        point=mistake_was_maden(d, point, lang)
                     elif point==9:
                         draw(d[9])
                         print(f'{translator('Game Over!!!', lang)}     {translator('Regular word:', lang)} {word}')
