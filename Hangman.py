@@ -57,10 +57,10 @@ while True:
                     base[name][0]+=1
                     break    
                 w=input(translator('Enter a letter: ', lang))
+                w=w.lower().strip()
                 if w=='':
                     print(translator('You must enter the letter!!!', lang))
                 else:
-                    w=w.lower().strip()
                     if w in word and w not in lst:
                         lst.append(w)
                         num=len(result1[w])
@@ -69,7 +69,7 @@ while True:
                             task1[i]=w
                         task=' '.join(task1)
                     elif len(w)>1:
-                        print(translator('You must enter only one letter!!!'))
+                        print(translator('You must enter only one letter!!!', lang))
                     elif w in lst:
                         print(translator('This letter is already in the hidden word.', lang))
                     elif point==9:
