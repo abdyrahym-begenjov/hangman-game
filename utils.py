@@ -12,8 +12,9 @@ def clear_screen():
         run(['clear'])
 
 def enter_lang(data):
-    print('English |  Русский')
+    clear_screen()
     while True:
+        print('English |  Русский')
         chosen_language=input()
         chosen_language=chosen_language.title().strip()
         match chosen_language:
@@ -26,19 +27,30 @@ def enter_lang(data):
                 words_list=pyread('words.json')
                 break
             case _:
-                continue
+                clear_screen()
     
     data['language']=lang
     data['words']=words_list
     pywrite('data.json', data)
     return lang, words_list
 
-def enter_name(lang, data):
+def enter_name(data, base, lang):
+    clear_screen()
     while True:
         name=input(translator('Enter your name: ', lang))
-        if name!='':
+        name=name.strip()
+        if name=='':
+            clear_screen()
+            print(translator('Error!!!', lang))
+        elif len(name)>16:
+            clear_screen()
+            print(translator('The name must not exceed 16 characters', lang))
+        else:
             data['name']=name
             pywrite('data.json', data)
+            if name not in base:
+                base[name]=[0, 0]
+                pywrite('base.json', base)
             return name
         
 def new_word(word, lang):

@@ -32,6 +32,7 @@ rutranslate={
     'OVERALL RESULT': 'ОБЩИЙ РЕЗУЛЬТАТ',
     'VICTORIES': 'ПОБЕДЫ',
     'DEFEATS': 'ПОРАЖЕНИЯ',
+    'The name must not exceed 16 characters': 'Имя не должно превышать 16 символов',
     'You must enter only one letter!!!': 'Вы должны ввести только одну букву!!!',
     'LEADERBOARD:': 'ЛИДЕРБОРД:'
              }

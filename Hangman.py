@@ -18,11 +18,8 @@ while True:
         clear_screen()
 
     if name=='':
-        name=enter_name(lang, data)
+        name=enter_name(data, base, lang)
         clear_screen()
-
-    if name not in base:
-        base[name]=[0, 0]
     
     print(translator('Hangman Game', lang))
     print(f'{translator('Creator: Abdyrahym Begenjov', lang)}     (GitHub: abdyrahym-begenjov)')
@@ -105,9 +102,7 @@ while True:
                 change=new_word(change, lang)
                 match change:
                     case 'Name':
-                        name=enter_name(lang, data)
-                        if name not in base:
-                            base[name]={'Victories': 0, 'Defeats': 0}
+                        name=enter_name(data, base, lang)
                         clear_screen()
                     case 'Language':
                         lang, words_list=enter_lang(data)
